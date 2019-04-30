@@ -19,5 +19,8 @@ const Route = use('Route')
 Route.group(() => {
     Route.post('auth/register', 'UserController.register');
     Route.post('auth/login', 'UserController.login');
+    Route.get('deliveries', 'DeliveryController.index').middleware('auth');
+    Route.post('deliveries', 'DeliveryController.create').middleware('auth');
+    Route.delete('deliveries/:id', 'DeliveryController.delete').middleware('auth');
   })
   .prefix('api');
