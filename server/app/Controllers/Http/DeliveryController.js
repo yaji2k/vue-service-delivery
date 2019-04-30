@@ -30,6 +30,15 @@ class DeliveryController {
         await delivery.delete();
         return delivery;
     }
+    async update({ auth, request, params }) {
+        const user = await auth.getUser();
+        const { id } = params;
+        const delivery = await Delivery.find(id);
+        AuthService.verifyPerm(delivery, user);
+        delivery.merge(request.only(['title', 'distance', 'tariff']));
+        await delivery.save();
+        return delivery;
+    }
 }
 
 module.exports = DeliveryController
