@@ -1,12 +1,24 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+  <v-app>
+    <Toolbar/>
+    <div id="app">
+      <router-view/>
+    </div>
+  </v-app>
 </template>
+<script>
+import Toolbar from '@/components/Toolbar.vue'
+
+export default {
+  components: {
+    Toolbar
+  }
+}
+</script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
