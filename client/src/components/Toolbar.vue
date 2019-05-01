@@ -1,7 +1,7 @@
   <template>
   <div>
     <v-toolbar>
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-toolbar-title>Service delivery</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon class="hidden-md-and-up" @click.stop="right = !right"></v-toolbar-side-icon>
       <v-toolbar-items class="hidden-sm-and-down">
