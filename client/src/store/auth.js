@@ -58,21 +58,18 @@ export default {
       state,
       commit
     }) {
-      commit('setRegisterError', null);
-      const {
-        data
-      } = await HTTP().post('auth/register', {
-        username: state.registerName,
-        email: state.registerEmail,
-        password: state.registerPassword,
-      });
-      if (!data.success) {
-        commit('setRegisterError', data.e.detail);
-      } else {
+      try {
+        commit('setRegisterError', null);
+        const { data }= await HTTP().post('auth/register', {
+          username: state.registerName,
+          email: state.registerEmail,
+          password: state.registerPassword,
+        });
         commit('setToken', data.token);
-        commit('setAdmin', data.is_admin);
         router.push('/');
-      };
+      } catch (error) {
+        commit('setRegisterError', 'Invalid Reg. Information');
+      }
     },
     login({
       state,
@@ -90,7 +87,7 @@ export default {
           router.push('/');
         })
         .catch((e) => {
-            console.log(e);
+          console.log(e);
           commit('setLoginError', 'Invalid Login. Information');
         });
     }
